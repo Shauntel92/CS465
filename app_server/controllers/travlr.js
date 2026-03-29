@@ -1,9 +1,17 @@
-const fs = require('fs');
+const mongoose = require('mongoose');
+const Trip = mongoose.model('trips');
 
-const travel = (req, res) => {
-  const trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));
-
-  res.render('travel', { title: 'Travlr Getaways', trips });
+const travel = async (req, res) => {
+  try {
+    const trips = await Trip.find();
+    res.render('travel', {
+      title: 'Travlr Getaways',
+      trips
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error retrieving trips');
+  }
 };
 
 module.exports = {
