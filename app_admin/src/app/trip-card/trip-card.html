@@ -1,0 +1,18 @@
+<div class="card h-100">
+  <img
+    [src]="'images/' + trip.image"
+    alt="trip thumbnail"
+    class="card-img-top"
+    style="height: 180px; object-fit: cover;"
+  >
+  <div class="card-body">
+    <h5 class="card-title">{{ trip.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ trip.resort }}</h6>
+    <p class="card-text">
+      {{ trip.length }} only {{ getPerPersonValue() | currency:'USD':'symbol' }} per person
+    </p>
+    <p class="card-text">{{ trip.description }}</p>
+  </div>
+</div>
+
+<a [routerLink]="['/edit-trip', trip.code]" class="btn btn-warning btn-sm">Edit</a>

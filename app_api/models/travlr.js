@@ -22,7 +22,7 @@ const tripSchema = new mongoose.Schema({
     required: true
   },
   perPerson: {
-    type: String,
+    type: Number,
     required: true
   },
   image: {
