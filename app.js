@@ -14,13 +14,19 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var apiRouter = require('./app_api/routes/index');
 var app = express();
-
+var passport = require('passport');
+require('./app_api/config/passport');
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
 app.set('view engine', 'hbs');
 
-app.use(cors());
+app.use(passport.initialize());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-trip-card',
@@ -11,6 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class TripCard {
   @Input() trip: any;
+
+  constructor(public authService: AuthService) {}
 
   getPerPersonValue(): number {
     const value = this.trip?.perPerson;

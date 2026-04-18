@@ -1,13 +1,14 @@
 
 <router-outlet></router-outlet>
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!--
+
+<button *ngIf="!authService.isLoggedIn()" routerLink="/login" class="btn btn-primary">
+  Login
+</button>
+
+<button *ngIf="authService.isLoggedIn()" (click)="authService.logout()" class="btn btn-danger">
+  Logout
+</button>
+<!-- 
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
